@@ -5,14 +5,20 @@ class CommentsController < ApplicationController
     @topic_id = params[:topic_id]
     @comment = Comment.new
   end
+  
+  def create
     
-  if @comment.save
+    @topic_id = params[:topic_id]
+    
+    @comment = current_user.comments.new(comment_params)
+    
+    if @comment.save
       redirect_to topics_path, success: 'コメント登録に成功しました'
-  else
+    else
       flash.now[:danger] = "コメント登録に失敗しました"
       render :new
+    end
   end
-end
   
   private
   def comment_params
