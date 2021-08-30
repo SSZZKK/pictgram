@@ -4,42 +4,32 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <div class="topic-index-single">
-            
-              <h2 class="topic-author">
-                <%= topic.user.name %>
-              </h2>
-              <%= image_tag topic.image.url %>
-            
-             <% if !topic.favorite_users.include? (current_user) %>
-             <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
-               <span class='fav-btn'>&#9825;</span>
-             <% end %>
+            <h2 class="topic-author">
+              <%= topic.user.name %>
+            </h2>
+            <%= image_tag topic.image.url %>
+            <% if !topic.favorite_users.include?(current_user) %>
+              <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
+              <i class="fa fa-heart fa-2x unfav-btn"></i>
+              <% end %>
             <% else %>
-             <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
-               <span class='unfav-btn'>&#9825;</span>
-             <% end %>
+              <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
+              <i class="fa fa-heart fa-2x fav-btn"></i>
+              <% end %>
             <% end %>
             <%= topic.favorite_users.count %>
-            
-           <%= link_to comments_new_path(topic_id: topic.id) do %>
-            <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
-           <% end %>
-            <p class="topic-text">
-             <%= topic.description %>
-            </p>
-            <P class="comment-title">
-             コメント
-            </P>
-              </div>
-              
-              <% topic.comments.each do |comment| %>
-                <div class = "topic-index-item">
-                  <%= comment.comment %>
-                </div>
+            <%= link_to comment_new_path(topic_id: topic.id) do %>
+                  <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
+            <% end %>
+                <p class="topic-text">
+                  <%= topic.description %>
+                </p>
+                <p class="topic-text">Comment</p>
+                  <% topic.comments.each do |comment| %>
+                <p class = "comment-text">
+                  <%= comment.text %>
+                </p>
               <% end %>
-              
-            </div>  
-            
           </div>
         </div>
       </div>
