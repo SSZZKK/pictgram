@@ -64,6 +64,7 @@ group :test do
   gem 'pry-stack_explorer'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'sqlite3' #8/31追加
   
 end
 

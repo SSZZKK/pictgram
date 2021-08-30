@@ -8,16 +8,15 @@
           <div class="form-group">
             <!--<%= f.label :text %>-->
               <div class="col-sm-20" style="padding: 6px;">
-      <textarea class='form-control  input-sm' placeholder="入力してください"></textarea>
-    </div>
-                
+                <textarea class='form-control  input-sm' placeholder="入力してください"></textarea>
               </div>
           </div>
-          <% if logged_in? %>
-            <%= f.submit "投稿", class: "btn btn-black btn-block" %>
+      </div>
+        <% if logged_in? %>
+          <%= f.submit "投稿", class: "btn btn-black btn-block" %>
           <% end %>
         <% end %>
-      </div>
     </div>
+   </div>
   </div>
 </div>
