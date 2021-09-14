@@ -1,6 +1,6 @@
 class ImageUploader < CarrierWave::Uploader::Base
   # :fileから:fogへ変更
-  storage :fog
+  storage :file
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
